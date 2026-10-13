@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Naveed A | Senior Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --accent-blue: #3b82f6;
+            --accent-purple: #ac4bff;
+            --accent-emerald: #05df72;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.2em;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #fff, var(--accent-blue), #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shine 8s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .blob-blue {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+            filter: blur(100px);
+            z-index: -1;
+        }
+
+        .blob-purple {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(172, 75, 255, 0.05) 0%, transparent 70%);
+            filter: blur(120px);
+            z-index: -1;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .pulse {
+            animation: pulse-animation 2s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0px rgba(5, 223, 114, 0.4); }
+            100% { box-shadow: 0 0 0 10px rgba(5, 223, 114, 0); }
+        }
+
+        .timeline-rail {
+            background: linear-gradient(to bottom, var(--accent-blue), transparent);
+        }
+
+        .nav-link {
+            transition: color 0.2s ease;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-link:hover {
+            color: #fff;
+        }
+
+        .terminal-header {
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue) !important;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        .blue-glow {
+            box-shadow: 0 4px 24px -1px rgba(59, 130, 246, 0.3);
+        }
+
+        section {
+            padding: 120px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="grain-overlay"></div>
+
+    <nav class="fixed top-0 left-0 w-full z-50 px-8 py-6 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="bg-white/10 px-3 py-1 rounded-md">
+                    <span class="font-mono text-[10px] tracking-[0.3em] uppercase text-white">M. NAVEED</span>
+                </div>
+                <div class="hidden md:block">
+                    <p class="text-sm font-medium text-white/80">Senior Software Engineer</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-8 font-mono text-[11px] tracking-widest uppercase">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative">
+        <div class="blob-blue top-[10%] right-[10%]"></div>
+        <div class="blob-purple top-[40%] left-[5%]"></div>
+
+        <!-- HERO -->
+        <section id="hero" class="min-h-screen flex items-center pt-32 pb-20 px-8">
+            <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <span class="font-mono text-[12px] tracking-[0.3em] uppercase text-blue-400">MOHAMMED NAVEED A — SENIOR SOFTWARE ENGINEER</span>
+                        <h1 class="text-6xl lg:text-7xl font-black leading-tight">
+                            .NET Engineer<br>
+                            <span class="gradient-text">Azure Cloud &amp; AI-Native Development</span>
+                        </h1>
+                        <p class="text-xl text-white/60 max-w-xl leading-relaxed">
+                            .NET / Backend Engineer with 4+ years designing, modernizing, and scaling high-throughput enterprise applications and Azure cloud solutions. Expert in ASP.NET Core microservices, workflow automation, and AI-native features with LLMs and AI agents.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-6">
+                        <a href="#contact" class="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-semibold transition-all blue-glow flex items-center gap-2">
+                            Get in Touch
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="glass-card px-8 py-4 rounded-xl font-semibold hover:border-white/30 transition-all flex items-center gap-2">
+                            Download Resume
+                            <i data-lucide="download" class="w-4 h-4"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/muhammednaveed" target="_blank" class="text-white/50 hover:text-white transition-colors flex items-center gap-2 text-sm font-mono uppercase tracking-widest">
+                            LinkedIn
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-white/10">
+                        <div>
+                            <p class="text-3xl font-bold">4+</p>
+                            <p class="text-[10px] font-mono uppercase tracking-widest text-white/40 mt-1">Years Experience</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold">40+</p>
+                            <p class="text-[10px] font-mono uppercase tracking-widest text-white/40 mt-1">Systems Migrated</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold">14</p>
+                            <p class="text-[10px] font-mono uppercase tracking-widest text-white/40 mt-1">Team Members Led</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold">7.7k+</p>
+                            <p class="text-[10px] font-mono uppercase tracking-widest text-white/40 mt-1">NuGet Downloads</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terminal -->
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-2xl group-hover:opacity-75 transition duration-1000"></div>
+                    <div class="glass-card relative border-white/20 overflow-hidden shadow-2xl">
+                        <div class="terminal-header px-4 py-3 flex items-center justify-between">
+                            <div class="flex gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                            </div>
+                            <span class="text-[10px] font-mono tracking-widest text-white/30">AZURE_OPS_CENTER</span>
+                        </div>
+                        <div class="p-6 font-mono text-sm space-y-4">
+                            <div class="flex gap-3">
+                                <span class="text-blue-400">$</span>
+                                <span>dotnet build --configuration Release</span>
+                            </div>
+                            <div class="text-white/40 space-y-1">
+                                <p>Microsoft (R) Build Engine version 17.8.3</p>
+                                <p>Determining projects to restore...</p>
+                                <p>Restored App.Core.csproj (in 1.2s)</p>
+                            </div>
+                            <div class="space-y-2 border-t border-white/5 pt-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="cloud" class="w-4 h-4 text-blue-400"></i>
+                                        <span class="text-xs">Deployment: Production Pipeline</span>
+                                    </div>
+                                    <span class="text-[10px] bg-green-500/20 text-green-400 px-2 py-0.5 rounded">SUCCESS</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="cpu" class="w-4 h-4 text-purple-400"></i>
+                                        <span class="text-xs">AI-Agent Service Health</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="status-dot bg-green-400 pulse"></span>
+                                        <span class="text-[10px] text-green-400">ACTIVE</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="database" class="w-4 h-4 text-emerald-400"></i>
+                                        <span class="text-xs">Sync: DB.Migration.Main</span>
+                                    </div>
+                                    <span class="text-xs text-white/40">142ms</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="px-8 bg-zinc-950/50">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-20">
+                    <div>
+                        <span class="font-mono text-[12px] tracking-[0.3em] uppercase text-emerald-400">NARRATIVE</span>
+                        <h2 class="text-4xl font-bold mt-4 mb-8">Architecting Resilient<br>Backend Ecosystems</h2>
+                        <div class="space-y-6 text-white/60 leading-relaxed">
+                            <p>
+                                With a deep-rooted passion for enterprise-grade architecture, I specialize in building scalable .NET systems that thrive under high demand. My approach combines the rigor of Clean Architecture with the cutting-edge capabilities of Azure Cloud and AI-Native integration.
+                            </p>
+                            <p>
+                                From leading large cross-functional teams to authoring open-source tools, I focus on delivering mission-critical solutions that don't just work—they excel. I believe in zero-downtime, maximum performance, and security as a first-class citizen in the development lifecycle.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="glass-card p-8">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-blue-400"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Stability First</h3>
+                            <p class="text-sm text-white/50">Zero post-launch issues across all shipped microservices.</p>
+                        </div>
+                        <div class="glass-card p-8">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4">
+                                <i data-lucide="clock" class="w-5 h-5 text-emerald-400"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Performance</h3>
+                            <p class="text-sm text-white/50">80% reduction in manual turnaround through automation.</p>
+                        </div>
+                        <div class="glass-card p-8">
+                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4">
+                                <i data-lucide="zap" class="w-5 h-5 text-purple-400"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Modernization</h3>
+                            <p class="text-sm text-white/50">40+ legacy systems migrated with 100% on-time delivery.</p>
+                        </div>
+                        <div class="glass-card p-8">
+                            <div class="w-10 h-10 rounded-xl bg-yellow-500/10 flex items-center justify-center mb-4">
+                                <i data-lucide="shield" class="w-5 h-5 text-yellow-400"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Security</h3>
+                            <p class="text-sm text-white/50">313+ vulnerabilities resolved via automated SAST remediation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="font-mono text-[12px] tracking-[0.3em] uppercase text-blue-400">CAPABILITY MAP</span>
+                    <h2 class="text-4xl font-bold mt-4">Tech Stack &amp; Expertise</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-card p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-blue-600/10 flex items-center justify-center">
+                                <i data-lucide="server" class="w-6 h-6 text-blue-400"></i>
+                            </div>
+                            <h3 class="font-bold text-xl">Backend Dev</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">C#</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">ASP.NET Core</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">Web API</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">EF Core</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">Dapper</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">LINQ</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-cyan-600/10 flex items-center justify-center">
+                                <i data-lucide="cloud" class="w-6 h-6 text-cyan-400"></i>
+                            </div>
+                            <h3 class="font-bold text-xl">Cloud &amp; DevOps</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">Azure</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">CI/CD</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">Git</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">Cosmos DB</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">App Service</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">AWS</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-purple-600/10 flex items-center justify-center">
+                                <i data-lucide="cpu" class="w-6 h-6 text-purple-400"></i>
+                            </div>
+                            <h3 class="font-bold text-xl">AI Engineering</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">LLM APIs</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">AI Agents</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">MCP</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">Claude</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">MS Foundry</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-600/10 flex items-center justify-center">
+                                <i data-lucide="database" class="w-6 h-6 text-emerald-400"></i>
+                            </div>
+                            <h3 class="font-bold text-xl">Databases</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">SQL Server</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">PostgreSQL</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">MySQL</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">Raw SQL</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-pink-600/10 flex items-center justify-center">
+                                <i data-lucide="layout" class="w-6 h-6 text-pink-400"></i>
+                            </div>
+                            <h3 class="font-bold text-xl">Frontend</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">React</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">Redux/Saga</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">Vite</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">NPM/Yarn</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-orange-600/10 flex items-center justify-center">
+                                <i data-lucide="boxes" class="w-6 h-6 text-orange-400"></i>
+                            </div>
+                            <h3 class="font-bold text-xl">Architecture</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">Microservices</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">Monolithic</span>
+                            <span class="px-3 py-1 bg-white/5 rounded-full text-xs text-white/70 border border-white/10">RESTful APIs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="px-8 bg-zinc-950/30">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-16">
+                    <span class="font-mono text-[12px] tracking-[0.3em] uppercase text-blue-400">CAREER PATH</span>
+                    <h2 class="text-4xl font-bold mt-4">Professional Experience</h2>
+                </div>
+
+                <div class="relative space-y-12">
+                    <div class="absolute left-[11px] top-4 bottom-4 w-0.5 timeline-rail opacity-20"></div>
+
+                    <div class="relative pl-12">
+                        <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-black border-2 border-blue-500 z-10"></div>
+                        <div class="glass-card p-8">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                                <div>
+                                    <h3 class="text-2xl font-bold">Senior Software Engineer</h3>
+                                    <p class="text-blue-400 font-medium">Ideassion Technology Solutions — Chennai</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-sm font-mono text-white/40">MAY 2022 — PRESENT</span>
+                                </div>
+                            </div>
+                            <p class="text-white/60 mb-6 italic text-sm">Client: Buckman Laboratories International — Global vendor of digital water and chemical platforms.</p>
+                            <ul class="space-y-4">
+                                <li class="flex gap-3 text-sm text-white/70">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-blue-500 shrink-0"></i>
+                                    <span>Led 14-member team through E2E feature development across backend, web &amp; mobile with 100% on-time delivery.</span>
+                                </li>
+                                <li class="flex gap-3 text-sm text-white/70">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-blue-500 shrink-0"></i>
+                                    <span>Migrated 40+ legacy projects to modern .NET and EF Core, improving performance by 75% and reducing technical debt.</span>
+                                </li>
+                                <li class="flex gap-3 text-sm text-white/70">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-blue-500 shrink-0"></i>
+                                    <span>Built and optimized high-volume RESTful APIs in ASP.NET Core with OpenAPI/Swagger integration.</span>
+                                </li>
+                                <li class="flex gap-3 text-sm text-white/70">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 text-blue-500 shrink-0"></i>
+                                    <span>Authored and published open-source NuGet package <strong>BulkDataSeeder.EfCore</strong> (7.7k+ downloads).</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-12">
+                        <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-black border-2 border-white/20 z-10"></div>
+                        <div class="glass-card p-8 opacity-80">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                                <div>
+                                    <h3 class="text-2xl font-bold">Software Engineer Trainee (Intern)</h3>
+                                    <p class="text-white/50 font-medium">Ideassion Technology Solutions</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-sm font-mono text-white/40">JAN 2022 — APRIL 2022</span>
+                                </div>
+                            </div>
+                            <p class="text-sm text-white/50">Foundational training in .NET ecosystem, assisting in module development and testing lifecycle for chemical selection platforms.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <span class="font-mono text-[12px] tracking-[0.3em] uppercase text-purple-400">CASE STUDIES</span>
+                        <h2 class="text-4xl font-bold mt-4">Key Projects</h2>
+                    </div>
+                    <a href="#" class="text-sm font-mono text-white/40 hover:text-white flex items-center gap-2 group tracking-widest uppercase">
+                        View All Archives
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-card p-8 flex flex-col h-full group">
+                        <div class="w-12 h-12 rounded-xl bg-blue-600/10 flex items-center justify-center mb-6 group-hover:bg-blue-600/20 transition-colors">
+                            <i data-lucide="truck" class="w-6 h-6 text-blue-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">AI-Native Logistics Platform</h3>
+                        <p class="text-white/50 text-sm mb-6 flex-grow leading-relaxed">
+                            Orchestrated an autonomous logistics framework using AI agents to automate route optimization. Achieved 25% delivery turnaround reduction and 99.9% tracking accuracy.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-[10px] font-mono text-white/30 uppercase">Next.js</span>
+                                <span class="text-[10px] font-mono text-white/30 uppercase">Node.js</span>
+                                <span class="text-[10px] font-mono text-white/30 uppercase">AI Agents</span>
+                            </div>
+                            <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                                <span class="text-xs font-bold text-blue-400">5k+ daily shipments</span>
+                                <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/20 group-hover:text-white transition-colors"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 flex flex-col h-full group">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-600/10 flex items-center justify-center mb-6 group-hover:bg-emerald-600/20 transition-colors">
+                            <i data-lucide="bar-chart-3" class="w-6 h-6 text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Akumen Product Predictor</h3>
+                        <p class="text-white/50 text-sm mb-6 flex-grow leading-relaxed">
+                            Survey-driven chemical selection platform. Developed an automated decision service (AP Engine) calculating exact treatment programs for 5,000+ catalog items.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-[10px] font-mono text-white/30 uppercase">.NET Core</span>
+                                <span class="text-[10px] font-mono text-white/30 uppercase">SQL</span>
+                                <span class="text-[10px] font-mono text-white/30 uppercase">Microservices</span>
+                            </div>
+                            <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                                <span class="text-xs font-bold text-emerald-400">60% faster proposals</span>
+                                <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/20 group-hover:text-white transition-colors"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 flex flex-col h-full group">
+                        <div class="w-12 h-12 rounded-xl bg-purple-600/10 flex items-center justify-center mb-6 group-hover:bg-purple-600/20 transition-colors">
+                            <i data-lucide="message-square" class="w-6 h-6 text-purple-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Live Chat Transcript</h3>
+                        <p class="text-white/50 text-sm mb-6 flex-grow leading-relaxed">
+                            Automated archiving for 100% of customer sessions. Designed custom retry policies and structured logging to achieve 99.9% message retention.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-[10px] font-mono text-white/30 uppercase">HTTP Client</span>
+                                <span class="text-[10px] font-mono text-white/30 uppercase">Webhooks</span>
+                                <span class="text-[10px] font-mono text-white/30 uppercase">Relational DB</span>
+                            </div>
+                            <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                                <span class="text-xs font-bold text-purple-400">~15h saved weekly</span>
+                                <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/20 group-hover:text-white transition-colors"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 flex flex-col h-full group">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-600/10 flex items-center justify-center mb-6 group-hover:bg-cyan-600/20 transition-colors">
+                            <i data-lucide="radio" class="w-6 h-6 text-cyan-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">IoT Controller Calibration</h3>
+                        <p class="text-white/50 text-sm mb-6 flex-grow leading-relaxed">
+                            Architected event-driven edge backend on Azure Functions for real-time remote calibration of handheld and standard water treatment sensors.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-[10px] font-mono text-white/30 uppercase">Azure Functions</span>
+                                <span class="text-[10px] font-mono text-white/30 uppercase">IoT Edge</span>
+                            </div>
+                            <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                                <span class="text-xs font-bold text-cyan-400">Telemetry Streamlined</span>
+                                <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/20 group-hover:text-white transition-colors"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 flex flex-col h-full group">
+                        <div class="w-12 h-12 rounded-xl bg-red-600/10 flex items-center justify-center mb-6 group-hover:bg-red-600/20 transition-colors">
+                            <i data-lucide="shield-check" class="w-6 h-6 text-red-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Security Remediation</h3>
+                        <p class="text-white/50 text-sm mb-6 flex-grow leading-relaxed">
+                            Managed and resolved 313+ Checkmarx SAST vulnerabilities across core microservices and APIs, embedding scanning directly into CI/CD.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-[10px] font-mono text-white/30 uppercase">Checkmarx</span>
+                                <span class="text-[10px] font-mono text-white/30 uppercase">DevSecOps</span>
+                            </div>
+                            <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                                <span class="text-xs font-bold text-red-400">313+ Vulnerabilities</span>
+                                <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/20 group-hover:text-white transition-colors"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 flex flex-col h-full group">
+                        <div class="w-12 h-12 rounded-xl bg-orange-600/10 flex items-center justify-center mb-6 group-hover:bg-orange-600/20 transition-colors">
+                            <i data-lucide="flask-conical" class="w-6 h-6 text-orange-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Connected Lab Sync</h3>
+                        <p class="text-white/50 text-sm mb-6 flex-grow leading-relaxed">
+                            Built a lab-request workflow letting customers submit, process, and analyze samples with reporting and third-party lab integration.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-[10px] font-mono text-white/30 uppercase">Web API</span>
+                                <span class="text-[10px] font-mono text-white/30 uppercase">Integration</span>
+                            </div>
+                            <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                                <span class="text-xs font-bold text-orange-400">E2E Workflow</span>
+                                <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/20 group-hover:text-white transition-colors"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION & CERTS -->
+        <section id="education" class="px-8 bg-zinc-950/50">
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
+                <div>
+                    <span class="font-mono text-[12px] tracking-[0.3em] uppercase text-blue-400">FOUNDATION</span>
+                    <h2 class="text-4xl font-bold mt-4 mb-12">Education</h2>
+                    <div class="space-y-8">
+                        <div class="flex gap-6">
+                            <div class="text-blue-500 pt-1">
+                                <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Master of Computer Applications (MCA)</h3>
+                                <p class="text-white/60 text-sm">MEASI Institute of Information and Technology, Chennai</p>
+                                <p class="text-[10px] font-mono text-white/30 mt-2 uppercase">Graduated April 2022</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="text-blue-500 pt-1">
+                                <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Bachelor of Computer Applications (BCA)</h3>
+                                <p class="text-white/60 text-sm">The New College, Chennai</p>
+                                <p class="text-[10px] font-mono text-white/30 mt-2 uppercase">Graduated April 2020</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="font-mono text-[12px] tracking-[0.3em] uppercase text-emerald-400">CREDENTIALS</span>
+                    <h2 class="text-4xl font-bold mt-4 mb-12">Certifications</h2>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="glass-card p-6 border-emerald-500/10">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                                    <i data-lucide="award" class="w-4 h-4 text-blue-400"></i>
+                                </div>
+                                <span class="text-[10px] font-mono text-white/40 uppercase">Microsoft</span>
+                            </div>
+                            <h3 class="text-sm font-bold leading-tight">Azure Administrator Associate (AZ-104)</h3>
+                        </div>
+                        <div class="glass-card p-6 border-emerald-500/10">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                                    <i data-lucide="award" class="w-4 h-4 text-blue-400"></i>
+                                </div>
+                                <span class="text-[10px] font-mono text-white/40 uppercase">Microsoft</span>
+                            </div>
+                            <h3 class="text-sm font-bold leading-tight">Azure Fundamentals (AZ-900)</h3>
+                        </div>
+                        <div class="glass-card p-6 border-emerald-500/10">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                                    <i data-lucide="award" class="w-4 h-4 text-blue-400"></i>
+                                </div>
+                                <span class="text-[10px] font-mono text-white/40 uppercase">Microsoft</span>
+                            </div>
+                            <h3 class="text-sm font-bold leading-tight">Azure Data Engineering (DP-700)</h3>
+                        </div>
+                        <div class="glass-card p-6 border-emerald-500/10">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center">
+                                    <i data-lucide="award" class="w-4 h-4 text-purple-400"></i>
+                                </div>
+                                <span class="text-[10px] font-mono text-white/40 uppercase">Anthropic</span>
+                            </div>
+                            <h3 class="text-sm font-bold leading-tight">Claude 101 AI Specialization</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-20">
+                    <div class="space-y-8">
+                        <div>
+                            <span class="font-mono text-[12px] tracking-[0.3em] uppercase text-blue-400">READY TO SCALE?</span>
+                            <h2 class="text-5xl font-bold mt-4 leading-tight">Let's build something<br><span class="text-white/30">extraordinary together.</span></h2>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4 group cursor-pointer">
+                                <div class="w-12 h-12 rounded-xl glass-card flex items-center justify-center group-hover:border-blue-500/50 transition-colors">
+                                    <i data-lucide="mail" class="w-5 h-5 text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-mono text-white/40 uppercase tracking-widest">Email Address</p>
+                                    <p class="text-lg font-medium">mohammednaveeda10@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 group cursor-pointer">
+                                <div class="w-12 h-12 rounded-xl glass-card flex items-center justify-center group-hover:border-blue-500/50 transition-colors">
+                                    <i data-lucide="phone" class="w-5 h-5 text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-mono text-white/40 uppercase tracking-widest">Phone / WhatsApp</p>
+                                    <p class="text-lg font-medium">+91 6369525936</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 group cursor-pointer">
+                                <div class="w-12 h-12 rounded-xl glass-card flex items-center justify-center group-hover:border-blue-500/50 transition-colors">
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-mono text-white/40 uppercase tracking-widest">Location</p>
+                                    <p class="text-lg font-medium">Chennai, India</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 pt-8">
+                            <a href="#" class="w-10 h-10 glass-card rounded-lg flex items-center justify-center hover:bg-blue-500/10 transition-colors">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 glass-card rounded-lg flex items-center justify-center hover:bg-blue-500/10 transition-colors">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 glass-card rounded-lg flex items-center justify-center hover:bg-blue-500/10 transition-colors">
+                                <i data-lucide="twitter" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-10">
+                        <form class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-mono uppercase tracking-widest text-white/40">Full Name</label>
+                                    <input type="text" placeholder="John Doe" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-mono uppercase tracking-widest text-white/40">Email Address</label>
+                                    <input type="email" placeholder="john@example.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-mono uppercase tracking-widest text-white/40">Subject</label>
+                                <input type="text" placeholder="Project Inquiry" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-mono uppercase tracking-widest text-white/40">Message</label>
+                                <textarea rows="4" placeholder="Tell me about your project..." class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white resize-none"></textarea>
+                            </div>
+                            <button class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl transition-all blue-glow flex items-center justify-center gap-2">
+                                Send Message
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <p class="text-[10px] font-mono text-white/30 tracking-[0.3em] uppercase">© 2024 MOHAMMED NAVEED A. ALL RIGHTS RESERVED.</p>
+            <div class="flex items-center gap-8">
+                <a href="#" class="text-[10px] font-mono text-white/30 hover:text-white transition-colors tracking-widest uppercase">Privacy</a>
+                <a href="#" class="text-[10px] font-mono text-white/30 hover:text-white transition-colors tracking-widest uppercase">Terms</a>
+                <div class="flex items-center gap-2">
+                    <span class="status-dot bg-green-400"></span>
+                    <span class="text-[10px] font-mono text-white/30 uppercase tracking-widest">Portfolio Stable</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Contact form (demo handler — wire to Formspree/EmailJS for production)
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Sending...';
+            btn.classList.add('opacity-50', 'pointer-events-none');
+            
+            setTimeout(() => {
+                btn.innerHTML = 'Message Sent!';
+                btn.classList.remove('bg-blue-600');
+                btn.classList.add('bg-emerald-600');
+                form.reset();
+            }, 2000);
+        });
+    </script>
